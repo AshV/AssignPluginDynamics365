@@ -1,0 +1,9 @@
+C:\Users\AshV\documents\visual studio 2017\Projects\AssignPlugin\AssignPlugin\obj\Debug\AssignPlugin.csprojResolveAssemblyReference.cache
+C:\Users\AshV\documents\visual studio 2017\Projects\AssignPlugin\AssignPlugin\bin\Debug\AssignPlugin.dll
+C:\Users\AshV\documents\visual studio 2017\Projects\AssignPlugin\AssignPlugin\bin\Debug\AssignPlugin.pdb
+C:\Users\AshV\documents\visual studio 2017\Projects\AssignPlugin\AssignPlugin\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+C:\Users\AshV\documents\visual studio 2017\Projects\AssignPlugin\AssignPlugin\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Users\AshV\documents\visual studio 2017\Projects\AssignPlugin\AssignPlugin\bin\Debug\Microsoft.Crm.Sdk.Proxy.xml
+C:\Users\AshV\documents\visual studio 2017\Projects\AssignPlugin\AssignPlugin\bin\Debug\Microsoft.Xrm.Sdk.xml
+C:\Users\AshV\documents\visual studio 2017\Projects\AssignPlugin\AssignPlugin\obj\Debug\AssignPlugin.dll
+C:\Users\AshV\documents\visual studio 2017\Projects\AssignPlugin\AssignPlugin\obj\Debug\AssignPlugin.pdb
