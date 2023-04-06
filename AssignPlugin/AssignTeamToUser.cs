@@ -11,27 +11,34 @@ namespace AssignPlugin
     {
         public void Execute(IServiceProvider serviceProvider)
         {
-            if (serviceProvider == null) return;
-
-            // Obtain the Plugin Execution Context
-            var context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
-
-            // Obtain the organization service reference.
-            var serviceFactory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
-            var service = serviceFactory.CreateOrganizationService(context.UserId);
-
-            // To check depth 
-            if (context.Depth > 2) return;
-
-            // The InputParameters collection contains all the data passed in the message request.
-            if (context.InputParameters.Contains("Target") && context.InputParameters["Target"] is EntityReference)
+            if (serviceProvider != null)
             {
-                // Business logic goes here
-                new AssignTeamToUser().BusinessLogic(service, context);
+                // Obtain the Plugin Execution Context
+                IPluginExecutionContext context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
+
+                // Obtain the organization service reference.
+                IOrganizationServiceFactory factory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
+                IOrganizationService service = factory.CreateOrganizationService(context.UserId);
+                
+                //For Trace Logs
+                ITracingService tracing = (ITracingService)serviceProvider.GetService(typeof(ITracingService));
+
+                // To check depth 
+                if (context.Depth <= 2)
+                {
+                    // The InputParameters collection contains all the data passed in the message request.
+                    if (context.InputParameters.Contains("Target") && context.InputParameters["Target"] is EntityReference)
+                    {
+                        // Business logic goes here
+                        tracing.Trace("Running Business Logic");
+                        new AssignTeamToUser().BusinessLogic(service, context, tracing);
+                        tracing.Trace("Completed Business Logic");
+                    }
+                }
             }
         }
 
-        private void BusinessLogic(IOrganizationService service, IExecutionContext context)
+        private void BusinessLogic(IOrganizationService service, IExecutionContext context, ITracingService tracing)
         {
             // We are hitting Assign button on a Case record so Target will be a Case record
             var caseEntityReference = (EntityReference)context.InputParameters["Target"];
